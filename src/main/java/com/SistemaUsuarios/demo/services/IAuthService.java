@@ -6,7 +6,7 @@ import com.SistemaUsuarios.demo.dto.Response.LoginResponse;
 
 public interface IAuthService {
 
-    String login(LoginRequest request);
+    LoginResponse login(LoginRequest request);
 
     LoginResponse register(RegisterRequest request);
 

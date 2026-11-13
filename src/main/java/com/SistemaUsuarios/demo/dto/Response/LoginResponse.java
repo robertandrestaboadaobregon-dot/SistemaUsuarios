@@ -17,12 +17,10 @@ public class LoginResponse {
     private List<String> roles;
 
     public LoginResponse(String token,
-                         String tipo,
                          String username,
                          String nombre,
                          List<String> roles) {
         this.token = token;
-        this.tipo = tipo;
         this.username = username;
         this.nombre = nombre;
         this.roles = roles;
