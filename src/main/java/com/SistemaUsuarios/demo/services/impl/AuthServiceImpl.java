@@ -56,7 +56,7 @@ public class AuthServiceImpl implements IAuthService {
             throw new RuntimeException("El username ya esta en uso" + request.getUsername());
         }
 
-        Rol rol = rolRepository.findByName(request.getRol())
+        Rol rol = rolRepository.findByNombre(request.getRol())
                 .orElseThrow(()-> new RuntimeException("Rol no encontrado " + request.getRol()));
 
         User usuario = new User();

@@ -17,6 +17,6 @@ public class RegisterRequest {
     @NotBlank
     private String nombre;
 
-    private String rol = "CAJERO";
+    private String rol = "ADMIN";
 
 }
