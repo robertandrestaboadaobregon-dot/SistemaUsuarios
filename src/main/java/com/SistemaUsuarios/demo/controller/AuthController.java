@@ -5,6 +5,8 @@ import com.SistemaUsuarios.demo.dto.ApiResponse;
 import com.SistemaUsuarios.demo.dto.Request.LoginRequest;
 import com.SistemaUsuarios.demo.dto.Request.RegisterRequest;
 import com.SistemaUsuarios.demo.dto.Response.LoginResponse;
+import com.SistemaUsuarios.demo.dto.Response.UserResponseDto;
+import com.SistemaUsuarios.demo.mapper.Mapper;
 import com.SistemaUsuarios.demo.services.impl.AuthServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,6 +14,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -33,5 +37,16 @@ public class AuthController {
     public ResponseEntity<ApiResponse<LoginResponse>> register(
             @Valid @RequestBody RegisterRequest request) {
         return ResponseEntity.ok(ApiResponse.ok("Usuario registrado exitosamente", authService.register(request)));
+    }
+
+
+    @Operation(summary = "Listar todos los usuarios")
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<UserResponseDto>>> listar() {
+        List<UserResponseDto> users = authService.listUsers()
+                .stream()
+                .map(Mapper::toUserResponseDto)
+                .toList();
+        return ResponseEntity.ok(ApiResponse.ok("Usuarios obtenidad correctamente"  ,  users));
     }
 }

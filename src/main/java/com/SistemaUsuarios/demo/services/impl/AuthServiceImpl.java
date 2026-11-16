@@ -79,4 +79,9 @@ public class AuthServiceImpl implements IAuthService {
                 usuario.getNombre(),
                 List.of(rol.getNombre()));
     }
+
+    @Override
+    public List<User> listUsers() {
+        return usuarioRepository.findAll();
+    }
 }
