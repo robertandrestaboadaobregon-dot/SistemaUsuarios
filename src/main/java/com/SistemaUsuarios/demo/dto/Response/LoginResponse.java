@@ -11,7 +11,6 @@ public class LoginResponse {
 
     private String token;
     private String tipo = "Bearer";
-
     private String username;
     private String nombre;
     private List<String> roles;
